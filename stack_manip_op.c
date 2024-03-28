@@ -47,7 +47,7 @@
     /*check if value to be pushed exists*/
     if(!value_holder.argument || !(_isint(value_holder.argument)))
     {
-        fprintf(stderr, "L%u: usage: No value to push\n", line_count);
+        fprintf(stderr, "L%u: usage: push integer \n", line_count);
         exit(EXIT_FAILURE);
     }
     /*convert to int and push*/
