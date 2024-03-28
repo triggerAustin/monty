@@ -90,7 +90,7 @@ void _pint(stack_t **head, unsigned int line_count)
 {
 	if((*head) == NULL)
 	{
-		fprintf(stderr, "L%u: pointer to stack is NULL\n", line_count);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d/n", (*head)->n);
