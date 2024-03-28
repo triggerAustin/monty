@@ -40,7 +40,7 @@ void _push(stack_t **head, unsigned int line_count)
 	new_node = malloc(sizeof(stack_t));
 	if(!new_node)
 	{
-		printf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 	
