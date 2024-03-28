@@ -45,22 +45,17 @@
 	     exit(EXIT_FAILURE);
      }
     /*check if value to be pushed exists*/
-    if(!value_holder.argument)
+    if(!value_holder.argument || !(_isint(value_holder.argument)))
     {
         fprintf(stderr, "L%u: usage: No value to push\n", line_count);
         exit(EXIT_FAILURE);
     }
     /*convert to int and push*/
-    if(_isint(value_holder.argument))
+    else
     {
         val = atoi(value_holder.argument);
        addnode(head, val);
 
-    }
-    else
-    {
-        fprintf(stderr, "L%u: usage: push integer", line_count);
-        exit(EXIT_FAILURE);
     }
     /*free(value_holder.argument);*/
  }
