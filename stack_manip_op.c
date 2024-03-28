@@ -44,10 +44,10 @@
 	     fprintf(stderr, "Error: malloc failed");
 	     exit(EXIT_FAILURE);
      }
-    /*check if value to be doesn't pushed exists*/
+    /*check if value to be pushed exists*/
     if(!value_holder.argument)
     {
-        fprintf(stderr, "L%u,Usage: No value to push\n", line_count);
+        fprintf(stderr, "L%u: usage: No value to push\n", line_count);
         exit(EXIT_FAILURE);
     }
     /*convert to int and push*/
@@ -59,7 +59,7 @@
     }
     else
     {
-        fprintf(stderr, "L%u,Usage: push integer value: %s", line_count, value_holder.argument);
+        fprintf(stderr, "L%u: usage: push integer", line_count);
         exit(EXIT_FAILURE);
     }
     /*free(value_holder.argument);*/
