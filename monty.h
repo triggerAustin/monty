@@ -67,5 +67,6 @@ void _div(stack_t **head, unsigned int line_count);
 void _mod(stack_t **head, unsigned int line_count);
 void _pchar(stack_t **head, unsigned int line_count);
 void _pstr(stack_t **head, unsigned int line_count);
+void nop(stack_t ** head, unsigned int line_count);
 #endif
 
