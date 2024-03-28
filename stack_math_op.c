@@ -7,7 +7,8 @@
  */
  void _add(stack_t **head, unsigned int count)
 {
-	stack_t *val1, *val2;
+	int value;
+	stack_t *val;
 
 	if(!head || (*head) == NULL || !*head || !(*head)->next)
 	{
@@ -15,15 +16,15 @@
 		exit(EXIT_FAILURE);
 	}
 
-	/*take first two values*/
-	val1 = *head;
-	val2 =  (*head)->next;
+	val = (*head)->next;
 
-	val1->n += val2->n;/*add values*/
-	free(val2);
+	value = (*head)->n + val->n;/*add values*/
 	
-	/*put results to top of stack*/
-	*head = val1;
+	/*pop top two elements*/
+	_pop(head, count);
+	_pop(head, count);
+
+	addnode(head, value);
 }
 
 /**
@@ -32,8 +33,9 @@
  * @count: line number in monty file
  */
 void _sub(stack_t **head, unsigned int count)
-{ 
-	stack_t *val1, *val2;
+{
+	int value;
+	stack_t *val;
 
 	if(!*head || !(*head)->next)
 	{
@@ -41,12 +43,14 @@ void _sub(stack_t **head, unsigned int count)
 		exit(EXIT_FAILURE);
 	}
 
-	/*take two values from top*/
-	val1 = *head;
-	val2 = (*head)->next;
+	val = (*head)->next;
+	value = val->n - (*head)->n;
 
-	val1->n -= val2->n;
-	*head = val1;
+	/*remove top two elements*/
+	_pop(head, count);
+	_pop(head, count);
+
+	addnode(head, value);
 }
 
 /**
@@ -56,7 +60,8 @@ void _sub(stack_t **head, unsigned int count)
  */
 void _div(stack_t **head, unsigned int count)
 {
-	stack_t *val1, *val2;
+	int value;
+	stack_t *val;
 
 	if(!*head || !(*head)->next)
 	{
@@ -64,19 +69,21 @@ void _div(stack_t **head, unsigned int count)
 		exit(EXIT_FAILURE);
 	}
 
-    	/*take two values from top*/
-	val1 = *head;
-	val2 = (*head)->next;
 
-	if(val2->n == 0)
+	if((*head)->n == 0)
 	{
 		fprintf(stderr, "l%u, zero division", count);
 		exit(EXIT_FAILURE);
 	}
 
-	val1->n /= val2->n;
-	free(val2);
-	*head = val1;
+	val = (*head)->next;
+	value = val->n / (*head)->n;
+
+	/*pop first two elements*/
+	_pop(head, count);
+	_pop(head, count);
+
+	addnode(head, value);
 }
 
 /**
@@ -86,7 +93,8 @@ void _div(stack_t **head, unsigned int count)
  */
 void _mul(stack_t **head, unsigned int count)
 {
-	stack_t *val1, *val2;
+	int value;
+	stack_t *val;
     
 	if(!*head || !(*head)->next)
 	{
@@ -95,9 +103,44 @@ void _mul(stack_t **head, unsigned int count)
 	}
 
 	/*take two values from top*/
-	val1 = *head;
-	val2 = (*head)->next;
+	val = (*head)->next;
+	value = val->n * (*head)->n;
+	
+	/*remove top two elements*/
+	_pop(head, count);
+	_pop(head, count);
+	/*push new value*/
+	addnode(head, value);
+}
 
-	val1->n *= val2->n;
-	*head = val1;
+/**
+ * _mod - gets the modulous of the top value
+ * @head: pointer to head of stack
+ * @count: line count in monty file
+ */
+void _mod(stack_t **head, unsigned int count)
+{
+	int value;
+	stack_t *mod_val;
+
+	if(!*head)
+	{
+		fprintf(stderr, "L%u: can't mod, stack too short\n", count);
+		exit(EXIT_FAILURE);
+	}
+
+	if((*head)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", count);
+		exit(EXIT_FAILURE);
+	}
+
+	mod_val = (*head)->next;
+	value = mod_val->n % (*head)->n;
+
+	/*pop top two elements*/
+	_pop(head, count);
+	_pop(head, count);
+
+	addnode(head, value);
 }

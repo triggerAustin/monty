@@ -15,13 +15,6 @@ void _pop(stack_t **head, unsigned int line_count)
 		exit(EXIT_FAILURE);
 	}
 
-	temp = malloc(sizeof(stack_t));
-
-	if(temp == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
 	temp = *head;
 	*head = (*head)->next;
 	free(temp);
@@ -33,9 +26,10 @@ void _pop(stack_t **head, unsigned int line_count)
  * @line_count: line number being worked on
  */
 void _push(stack_t **head, unsigned int line_count)
-{  
+{
 	int val;
 	stack_t *new_node;
+	(void)line_count;
 
 	new_node = malloc(sizeof(stack_t));
 	if(!new_node)
@@ -43,19 +37,17 @@ void _push(stack_t **head, unsigned int line_count)
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-	
-	/*check if value to be pushed exists and is int*/
-	if(!value_holder.argument || !(_isint(value_holder.argument)))
-	{
-		fprintf(stderr, "L%u: usage: push integer \n", line_count);
-		exit(EXIT_FAILURE);
-	}
-	else
+
+	if(_isint(value_holder.argument) && value_holder.argument != NULL)
 	{
 		val = atoi(value_holder.argument);
 		addnode(head, val);
 	}
-    /*free(value_holder.argument);*/
+	else
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", value_holder.line_count);
+		exit(EXIT_FAILURE);
+	}
 }
   
 /**
@@ -67,10 +59,10 @@ void _pall(stack_t **head, unsigned int line_count)
 {
 	stack_t *current;
 	(void)line_count;/*because it is not used*/
-	
+
 	/*check if stack is empty print nothing if so*/
 	if(*head == NULL)
-		exit(EXIT_FAILURE);
+		return;
     	
 	current = *head;
 	

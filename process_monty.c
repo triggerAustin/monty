@@ -56,12 +56,13 @@ int process_monty(stack_t **stack)
 		count++;
 		value_holder.line_val = line;/*store line*/
 		value_holder.line_count = count;/*store line count*/
-	}
-	token = strtok(value_holder.line_val, delimeters); 
-	if(token && token[0] == '#')/*check if line is a comment return to callling fn*/
-		return (0);
+
+		token = strtok(value_holder.line_val, delimeters); 
+		if(token && token[0] == '#')/*check if line is a comment return to callling fn*/
+			return (0);
     
-	value_holder.argument = strtok(NULL, delimeters);
-	get_func_operations(token, stack);/*pass to get fn associated with token*/
+		value_holder.argument = strtok(NULL, delimeters);
+		get_func_operations(token, stack);/*pass to get fn associated with token*/
+	}
 	return (0);
 }

@@ -1,6 +1,6 @@
 #include "monty.h"
 
-values value_holder = {NULL, NULL, 0, NULL};
+values value_holder = {NULL, 0, 0, NULL};
 
 /**
  * main -  takes in file as argument

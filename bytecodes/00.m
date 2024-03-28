@@ -1,3 +1,5 @@
-push 9                                     push 8
-push 0
+push 9
+push 1
+push 2 
+add
 pall
