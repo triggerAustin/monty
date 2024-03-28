@@ -23,17 +23,17 @@ void get_func_operations(char *token, stack_t **stack)
 	};
 	while((token && func_operations[i].opcode))
 	{
-	    if(strcmp(token, func_operations[i].opcode) == 0)
-	    {
-	        func_operations[i].f(stack, value_holder.line_count);
-	        return;
-	    }
-	    else if(strcmp(func_operations[i].opcode, "none") == 0)
-	    {
-	        fprintf(stderr, "L%u: unknown instruction %s\n", value_holder.line_count, token);
-		exit(EXIT_FAILURE);
-	    }
-	    i++;
+		if(strcmp(token, func_operations[i].opcode) == 0)
+		{
+			func_operations[i].f(stack, value_holder.line_count);
+			return;
+		}
+		else if(strcmp(func_operations[i].opcode, "none") == 0)
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n", value_holder.line_count, token);
+			exit(EXIT_FAILURE);
+		}
+		i++;
 	}
  }
 
@@ -46,14 +46,22 @@ void get_func_operations(char *token, stack_t **stack)
  */
 int process_monty(stack_t **stack)
 {
-    char *token;
-    char delimeters[] = " \t\n";
-    token = strtok(value_holder.line_val, delimeters);
+	unsigned int count = 0;
+	char line[256], *token;
+	char delimeters[] = " \t\n";
+
+	/*read file*/
+	while (fgets(line, 256, value_holder.file) != NULL)
+	{
+		count++;
+		value_holder.line_val = line;/*store line*/
+		value_holder.line_count = count;/*store line count*/
+	}
+	token = strtok(value_holder.line_val, delimeters); 
+	if(token && token[0] == '#')/*check if line is a comment return to callling fn*/
+		return (0);
     
-    if(token && token[0] == '#')/*check if line is a comment return to callling fn*/
-        return (0);
-    
-    value_holder.argument = strtok(NULL, delimeters);/*if operand exists, store in this variable*/
-    get_func_operations(token, stack);/*pass to get fn associated with token*/
-    return (0);
+	value_holder.argument = strtok(NULL, delimeters);
+	get_func_operations(token, stack);/*pass to get fn associated with token*/
+	return (0);
 }
