@@ -66,12 +66,11 @@
  */
 void _pall(stack_t **head, unsigned int line_count)
 {
-    stack_t *current;
+	stack_t *current;
+	(void)line_count;/*because it is not used*/
+	/*check if stack is empty print nothing if so*/
 	if(*head == NULL)
-	{
-		fprintf(stderr, "L%u: pointer to stack is NULL\n", line_count);
-		exit(EXIT_FAILURE);	
-	}
+		exit(EXIT_FAILURE);
     	
 	current = *head;
 	
