@@ -30,7 +30,8 @@ void get_func_operations(char *token, stack_t **stack)
 	    }
 	    else if(strcmp(func_operations[i].opcode, "none") == 0)
 	    {
-	        fprintf(stderr, "L%u: unknown instruction %s", value_holder.line_count, token);
+	        fprintf(stderr, "L%u: unknown instruction %s\n", value_holder.line_count, token);
+		exit(EXIT_FAILURE);
 	    }
 	    i++;
 	}
