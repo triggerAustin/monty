@@ -72,7 +72,6 @@
 void _pall(stack_t **head, unsigned int line_count)
 {
     stack_t *current;
-    printf("start\n");
 	if(*head == NULL)
 	{
 		fprintf(stderr, "L%u: pointer to stack is NULL\n", line_count);
@@ -137,4 +136,3 @@ void addnode(stack_t **head, int n)
 	(*head)->prev = new_node;
 	*head = new_node;
 }
-
