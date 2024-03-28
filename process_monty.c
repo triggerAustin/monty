@@ -18,7 +18,8 @@ void get_func_operations(char *token, stack_t **stack)
 		{"add", _add},
 		{"sub", _sub},
 		{"div", _div},
-		{"mul", _mul}
+		{"mul", _mul},
+		{"none", NULL}
 	};
 	while((token && func_operations[i].opcode))
 	{
@@ -27,9 +28,9 @@ void get_func_operations(char *token, stack_t **stack)
 	        func_operations[i].f(stack, value_holder.line_count);
 	        return;
 	    }
-	    else if(strcmp(token, "none") == 0)
+	    else if(strcmp(func_operations[i].opcode, "none") == 0)
 	    {
-	        fprintf(stderr, "L%u: unknown instruction", value_holder.line_count);
+	        fprintf(stderr, "L%u: unknown instruction %s", value_holder.line_count, token);
 	    }
 	    i++;
 	}

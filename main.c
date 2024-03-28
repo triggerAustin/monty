@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
    stack= malloc(sizeof(stack_t *));
     if(!stack)
     {
-        fprintf(stderr, "Error: malloc failed for stack\n");
+        fprintf(stderr, "Error: malloc failed\n");
         exit(EXIT_FAILURE);
     }
     *stack = NULL;
