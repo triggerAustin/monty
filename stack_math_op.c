@@ -65,14 +65,14 @@ void _div(stack_t **head, unsigned int count)
 
 	if(!*head || !(*head)->next)
 	{
-		fprintf(stderr, "L%u: can't div, stack too short", count);
+		fprintf(stderr, "L%u: can't div, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 
 
 	if((*head)->n == 0)
 	{
-		fprintf(stderr, "l%u: division by zero", count);
+		fprintf(stderr, "l%u: division by zero\n", count);
 		exit(EXIT_FAILURE);
 	}
 
