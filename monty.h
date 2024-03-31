@@ -68,5 +68,6 @@ void _pchar(stack_t **head, unsigned int line_count);
 void _pstr(stack_t **head, unsigned int line_count);
 void _nop(stack_t ** head, unsigned int line_count);
 void free_stack(stack_t **head);
+values value_holder = {NULL, 0, 0, NULL};
 #endif
 

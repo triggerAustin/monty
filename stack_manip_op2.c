@@ -9,7 +9,6 @@ void _nop(stack_t **head, unsigned int count)
 {
 	(void)count;
 	(void)head;
-	return;
 }
 
 /**
@@ -21,13 +20,13 @@ void _pstr(stack_t **head, unsigned int count)
 {
 	stack_t *current = *head;
 
-	if((*head) == NULL)
+	if ((*head) == NULL)
 	{
 		fprintf(stderr, "L%u: can't pstr, stack empty", count);
 		exit(EXIT_FAILURE);
 	}
 
-	while(current)
+	while (current)
 	{
 		if (current->n >= 0 || current->n <= 127)
 			putchar(current->n);
@@ -46,13 +45,13 @@ void _pchar(stack_t **head, unsigned int count)
 {
 	(void)count;
 
-	if((*head) == NULL)
+	if ((*head) == NULL)
 	{
 		fprintf(stderr, "L%u: can't ptchar, stack empty\n", count);
 		exit(EXIT_FAILURE);
 	}
 
-	if((*head)->n <= 127 || (*head)->n >= 0)
+	if ((*head)->n <= 127 || (*head)->n >= 0)
 	{
 		putchar((char)(*head)->n);
 		putchar('\n');

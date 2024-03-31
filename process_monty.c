@@ -1,17 +1,19 @@
 #include "monty.h"
 
 /**
- * get_func_operation - takes in a tokenized potion of monty code and calls the corresponding fn
+ * get_func_operation - takes in a tokenized potion of
+ * monty code and calls the corresponding fn
  * @token: a tokenized portion of monty code
  * @stack: the stack to be worked on
  */
 void get_func_operations(char *token, stack_t **stack)
 {
-	unsigned int i = 0;
+	unsigned int i = 0, c;
+	char *t;
 
 	instruction_t func_operations[] = {
 		{"push", _push},
-		{"pall", _pall}, 
+		{"pall", _pall},
 		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
@@ -25,21 +27,23 @@ void get_func_operations(char *token, stack_t **stack)
 		{"pchar", _pchar},
 		{"none", NULL}
 	};
-	while((token && func_operations[i].opcode))
+	while ((token && func_operations[i].opcode))
 	{
-		if(strcmp(token, func_operations[i].opcode) == 0)
+		if (strcmp(token, func_operations[i].opcode) == 0)
 		{
 			func_operations[i].f(stack, value_holder.line_count);
 			return;
 		}
-		else if(strcmp(func_operations[i].opcode, "none") == 0)
+		else if (strcmp(func_operations[i].opcode, "none") == 0)
 		{
-			fprintf(stderr, "L%u: unknown instruction %s\n", value_holder.line_count, token);
+			t = token;
+			c = value_holder.line_count;
+			fprintf(stderr, "L%u: unknown instruction %s\n", c, t);
 			exit(EXIT_FAILURE);
 		}
 		i++;
 	}
- }
+}
 
 /**
  * process_monty - processes the single line of the monty file,
@@ -61,10 +65,11 @@ int process_monty(stack_t **stack)
 		value_holder.line_val = line;/*store line*/
 		value_holder.line_count = count;/*store line count*/
 
-		token = strtok(value_holder.line_val, delimeters); 
-		if(token && token[0] == '#')/*check if line is a comment return to callling fn*/
+		token = strtok(value_holder.line_val, delimeters);
+		/*check if line is a comment return to callling fn*/
+		if (token && token[0] == '#')
 			return (0);
-    
+
 		value_holder.argument = strtok(NULL, delimeters);
 		get_func_operations(token, stack);/*pass to get fn associated with token*/
 	}

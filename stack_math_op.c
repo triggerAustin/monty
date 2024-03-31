@@ -5,12 +5,12 @@
  * @head: pointer to head of stack
  * @count: line number in monty file
  */
- void _add(stack_t **head, unsigned int count)
+void _add(stack_t **head, unsigned int count)
 {
 	int value;
 	stack_t *val;
 
-	if(!head || (*head) == NULL || !*head || !(*head)->next)
+	if (!head || (*head) == NULL || !*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", count);
 		exit(EXIT_FAILURE);
@@ -19,7 +19,7 @@
 	val = (*head)->next;
 
 	value = (*head)->n + val->n;/*add values*/
-	
+
 	/*pop top two elements*/
 	_pop(head, count);
 	_pop(head, count);
@@ -37,7 +37,7 @@ void _sub(stack_t **head, unsigned int count)
 	int value;
 	stack_t *val;
 
-	if(!*head || !(*head)->next)
+	if (!*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", count);
 		exit(EXIT_FAILURE);
@@ -63,14 +63,14 @@ void _div(stack_t **head, unsigned int count)
 	int value;
 	stack_t *val;
 
-	if(!*head || !(*head)->next)
+	if (!*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 
 
-	if((*head)->n == 0)
+	if ((*head)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", count);
 		exit(EXIT_FAILURE);
@@ -95,8 +95,8 @@ void _mul(stack_t **head, unsigned int count)
 {
 	int value;
 	stack_t *val;
-    
-	if(!*head || !(*head)->next)
+
+	if (!*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", count);
 		exit(EXIT_FAILURE);
@@ -105,7 +105,7 @@ void _mul(stack_t **head, unsigned int count)
 	/*take two values from top*/
 	val = (*head)->next;
 	value = val->n * (*head)->n;
-	
+
 	/*remove top two elements*/
 	_pop(head, count);
 	_pop(head, count);
@@ -123,13 +123,13 @@ void _mod(stack_t **head, unsigned int count)
 	int value;
 	stack_t *mod_val;
 
-	if(!*head)
+	if (!*head)
 	{
 		fprintf(stderr, "L%u: can't mod, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 
-	if((*head)->n == 0)
+	if ((*head)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", count);
 		exit(EXIT_FAILURE);

@@ -9,7 +9,7 @@ void _pop(stack_t **head, unsigned int line_count)
 {
 	stack_t *temp;
 
-	if(!*head || (*head) == NULL)
+	if (!*head || (*head) == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_count);
 		exit(EXIT_FAILURE);
@@ -19,7 +19,7 @@ void _pop(stack_t **head, unsigned int line_count)
 	*head = (*head)->next;
 	free(temp);
 }
- 
+
 /**
  * _push - pushes a value to top of stack
  * @head: pointer to stack
@@ -30,7 +30,7 @@ void _push(stack_t **head, unsigned int line_count)
 	int val;
 	(void)line_count;
 
-	if(_isint(value_holder.argument) && value_holder.argument != NULL)
+	if (_isint(value_holder.argument) && value_holder.argument != NULL)
 	{
 		val = atoi(value_holder.argument);
 		addnode(head, val);
@@ -42,7 +42,7 @@ void _push(stack_t **head, unsigned int line_count)
 	}
 
 }
-  
+
 /**
  * _pall - prints the stack
  * @head: pointer to head of stack
@@ -54,33 +54,17 @@ void _pall(stack_t **head, unsigned int line_count)
 	(void)line_count;/*because it is not used*/
 
 	/*check if stack is empty print nothing if so*/
-	if(*head == NULL)
+	if (*head == NULL)
 		return;
-    	
+
 	current = *head;
-	
-	while(current)
+
+	while (current)
 	{
 		printf("%d\n", current->n);/*print*/
 		current = current->next;
 	}
 }
-   
-/**
- * _pint - prints the top value in stack
- * @head: pointer to stack
- * @line_count: line number in monty file 
- */
-void _pint(stack_t **head, unsigned int line_count)
-{
-	if((*head) == NULL)
-	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", line_count);
-		exit(EXIT_FAILURE);
-	}
-	printf("%d\n", (*head)->n);
-}
-
 /**
  * _swap - swaps the two top values
  * @head: pointer to head of stack
@@ -90,7 +74,7 @@ void _swap(stack_t **head, unsigned int line_count)
 {
 	int temp;
 
-	if(!*head || !(*head)->next)
+	if (!*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_count);
 		exit(EXIT_FAILURE);
