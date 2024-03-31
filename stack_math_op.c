@@ -98,7 +98,7 @@ void _mul(stack_t **head, unsigned int count)
     
 	if(!*head || !(*head)->next)
 	{
-		fprintf(stderr, "L%u: can't mul, stack too short", count);
+		fprintf(stderr, "L%u: can't mul, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 
