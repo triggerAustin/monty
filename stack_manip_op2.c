@@ -54,7 +54,7 @@ void _pchar(stack_t **head, unsigned int count)
 
 	if((*head)->n <= 127 || (*head)->n >= 0)
 	{
-		putchar((*head)->n);
+		putchar((char)(*head)->n);
 		putchar('\n');
 	}
 	else
