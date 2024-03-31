@@ -48,7 +48,7 @@ void _pchar(stack_t **head, unsigned int count)
 
 	if((*head) == NULL)
 	{
-		fprintf(stderr, "L%u: can't ptchar, stack empty", count);
+		fprintf(stderr, "L%u: can't ptchar, stack empty\n", count);
 		exit(EXIT_FAILURE);
 	}
 
