@@ -16,12 +16,12 @@ void get_func_operations(char *token, stack_t **stack)
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
-		{"nop", nop},
+		{"nop", _nop},
 		{"sub", _sub},
 		{"div", _div},
 		{"mul", _mul},
-		{"pstr", pstr},
-		{"pchar", pchar},
+		{"pstr", _pstr},
+		{"pchar", _pchar},
 		{"none", NULL}
 	};
 	while((token && func_operations[i].opcode))

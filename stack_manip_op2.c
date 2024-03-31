@@ -5,7 +5,7 @@
  * @stack: pointer to head of stack
  * @count: line count on monty file
  */
-void nop(stack_t **head, unsigned int count)
+void _nop(stack_t **head, unsigned int count)
 {
 	(void)count;
 	(void)head;
@@ -17,7 +17,7 @@ void nop(stack_t **head, unsigned int count)
  * @head: pointer to top of stack
  * @count: line number in monty file
  */
-void pstr(stack_t **head, unsigned int count)
+void _pstr(stack_t **head, unsigned int count)
 {
 	stack_t *current = *head;
 
@@ -42,7 +42,7 @@ void pstr(stack_t **head, unsigned int count)
  * @head: pointer  to head of stack
  * @count: line number in monty file
  */
-void pchar(stack_t **head, unsigned int count)
+void _pchar(stack_t **head, unsigned int count)
 {
 	(void)count;
 
