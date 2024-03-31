@@ -7,10 +7,11 @@
  */
 int _isint(char *value)
 {
+	int checker, j = 0;
+
 	if (value == NULL)
 		return 0;
 
-	int j = 0, checker;
 	if(value[0] == '-')
 	{
 		j++;
