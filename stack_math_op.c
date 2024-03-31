@@ -72,7 +72,7 @@ void _div(stack_t **head, unsigned int count)
 
 	if((*head)->n == 0)
 	{
-		fprintf(stderr, "l%u: division by zero\n", count);
+		fprintf(stderr, "L%u: division by zero\n", count);
 		exit(EXIT_FAILURE);
 	}
 
