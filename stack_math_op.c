@@ -39,7 +39,7 @@ void _sub(stack_t **head, unsigned int count)
 
 	if(!*head || !(*head)->next)
 	{
-		fprintf(stderr, "L%u: can't subtract, stack too short\n", count);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 
@@ -65,14 +65,14 @@ void _div(stack_t **head, unsigned int count)
 
 	if(!*head || !(*head)->next)
 	{
-		fprintf(stderr, "L%u can't divide, stack too short", count);
+		fprintf(stderr, "L%u can't div, stack too short", count);
 		exit(EXIT_FAILURE);
 	}
 
 
 	if((*head)->n == 0)
 	{
-		fprintf(stderr, "l%u, zero division", count);
+		fprintf(stderr, "l%u, division by zero", count);
 		exit(EXIT_FAILURE);
 	}
 
@@ -98,7 +98,7 @@ void _mul(stack_t **head, unsigned int count)
     
 	if(!*head || !(*head)->next)
 	{
-		fprintf(stderr, "L%u: can't multiply, stack too short", count);
+		fprintf(stderr, "L%u: can't mul, stack too short", count);
 		exit(EXIT_FAILURE);
 	}
 
