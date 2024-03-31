@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	char *filename = argv[1];
 	stack_t **stack;
     
-	if (argc < 2)
+	if (argc != 2)
 	{
 		/*output error*/
 		fprintf(stderr, "USAGE: monty file\n");
