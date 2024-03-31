@@ -23,20 +23,25 @@ int main(int argc, char *argv[])
 	if(!stack)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free(filename);
 		exit(EXIT_FAILURE);
 	}
 	
 	*stack = NULL;
 	value_holder.file = fopen(filename, "r");/*open the file*/
-	
+
 	if (value_holder.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		free(filename);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 
-	process_monty(stack);/*process the monty file*/
-  
+	process_monty(stack);/*process the monty file*/ 
+	fclose(value_holder.file);
+	free_stack(stack);
+	free(stack);
 	return (0); 
 }
 

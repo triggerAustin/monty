@@ -1,25 +1,18 @@
 #include "monty.h"
 
 /**
- * _free - on call frees memory allocated to members of struct values
- * placed here because they are reusable
- * 
+ * free_stack - frees mem of anything associated with stack
+ * @head: pointer to head of stack
  */
- void _free()
- {
-    fclose(value_holder.file);
-    free(value_holder.line_val);
- }
-void _free_stack(stack_t *head)
+void free_stack(stack_t **head)
 {
-	stack_t *aux;
+    stack_t *current = *head;
+    stack_t *temp;
 
-	aux = head;
-	while (head)
-	{
-		aux = head->next;
-		free(head);
-		head = aux;
-	}
-	_free();
+    while (current != NULL) {
+        temp = current;
+        current = current->next;
+        free(temp);
+    }
+ 
 }

@@ -52,7 +52,6 @@ extern values value_holder;
 void get_func_operations(char *token, stack_t **stack);
 int process_monty(stack_t **stack);
 void _free();
- void _free_stack(stack_t *head);
 int _isint(char *value);
 void addnode(stack_t **head, int n);
 void _push(stack_t **head, unsigned int line_count);
@@ -68,5 +67,6 @@ void _mod(stack_t **head, unsigned int line_count);
 void _pchar(stack_t **head, unsigned int line_count);
 void _pstr(stack_t **head, unsigned int line_count);
 void nop(stack_t ** head, unsigned int line_count);
+void free_stack(stack_t **head);
 #endif
 

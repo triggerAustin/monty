@@ -28,15 +28,7 @@ void _pop(stack_t **head, unsigned int line_count)
 void _push(stack_t **head, unsigned int line_count)
 {
 	int val;
-	stack_t *new_node;
 	(void)line_count;
-
-	new_node = malloc(sizeof(stack_t));
-	if(!new_node)
-	{
-		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
 
 	if(_isint(value_holder.argument) && value_holder.argument != NULL)
 	{
@@ -48,6 +40,7 @@ void _push(stack_t **head, unsigned int line_count)
 		fprintf(stderr, "L%u: usage: push integer\n", value_holder.line_count);
 		exit(EXIT_FAILURE);
 	}
+
 }
   
 /**
@@ -133,5 +126,4 @@ void addnode(stack_t **head, int n)
 	if (*head != NULL)
 		(*head)->prev = new_node;
 	*head = new_node;
-
 }
