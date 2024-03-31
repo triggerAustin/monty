@@ -92,7 +92,7 @@ void _swap(stack_t **head, unsigned int line_count)
 
 	if(!*head || !(*head)->next)
 	{
-		fprintf(stderr, "L%u: can't swap, stack too short", line_count);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 
