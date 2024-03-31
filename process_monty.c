@@ -18,6 +18,7 @@ void get_func_operations(char *token, stack_t **stack)
 		{"add", _add},
 		{"nop", _nop},
 		{"sub", _sub},
+		{"mod", _mod},
 		{"div", _div},
 		{"mul", _mul},
 		{"pstr", _pstr},
