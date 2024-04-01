@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		free(filename);
 		free_stack(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 
