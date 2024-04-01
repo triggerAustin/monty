@@ -1,5 +1,13 @@
 #include "monty.h"
 
+values value_holder;
+void initialize_value_holder(void)
+{
+	value_holder.line_val = NULL;
+	value_holder.argument = 0;
+	value_holder.line_count = 0;
+	value_holder.file = NULL;
+}
 /**
  * main -  takes in file as argument
  * argv: argument vector
@@ -16,6 +24,8 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
+	initialize_value_holder();
 
 	stack = malloc(sizeof(stack_t *));
 	if (!stack)

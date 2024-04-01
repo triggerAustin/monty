@@ -27,17 +27,19 @@ void get_func_operations(char *token, stack_t **stack)
 		{"pchar", _pchar},
 		{"none", NULL}
 	};
+
+	t = token;
+	c = value_holder.line_count;
+
 	while ((token && func_operations[i].opcode))
 	{
 		if (strcmp(token, func_operations[i].opcode) == 0)
 		{
-			func_operations[i].f(stack, value_holder.line_count);
+			func_operations[i].f(stack, c);
 			return;
 		}
 		else if (strcmp(func_operations[i].opcode, "none") == 0)
 		{
-			t = token;
-			c = value_holder.line_count;
 			fprintf(stderr, "L%u: unknown instruction %s\n", c, t);
 			exit(EXIT_FAILURE);
 		}

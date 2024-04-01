@@ -5,7 +5,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -41,13 +40,13 @@ typedef struct instruction_s
  * @line_val: the opcode in the monty byte file
  * @file: file being worked on
  */
- typedef struct values
- {
-     char *line_val;
-     char *argument;
-     unsigned int line_count;
-     FILE *file;
- } values;
+typedef struct values
+{
+	char *line_val;
+	char *argument;
+	unsigned int line_count;
+	FILE *file;
+} values;
 extern values value_holder;
 void get_func_operations(char *token, stack_t **stack);
 int process_monty(stack_t **stack);
@@ -68,6 +67,5 @@ void _pchar(stack_t **head, unsigned int line_count);
 void _pstr(stack_t **head, unsigned int line_count);
 void _nop(stack_t ** head, unsigned int line_count);
 void free_stack(stack_t **head);
-values value_holder = {NULL, 0, 0, NULL};
 #endif
 
