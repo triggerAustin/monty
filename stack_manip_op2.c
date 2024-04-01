@@ -63,10 +63,12 @@ void _pchar(stack_t **head, unsigned int count)
 	}
 }
 /**
- *
- *
+ * _pint- prints top stack element
+ * @head: pointer to top of stack
+ * @line_count: line number on monty file
  */
-void _pint(stack_t **head, unsigned int line_count) {
+void _pint(stack_t **head, unsigned int line_count)
+{
 	if (*head == NULL) {
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_count);
 		exit(EXIT_FAILURE);
